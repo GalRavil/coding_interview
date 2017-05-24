@@ -1,4 +1,3 @@
-
 from random import randint
 
 
@@ -28,18 +27,18 @@ class Linked_list:
             self.tail.next = new_node
             self.tail = new_node
             
-    # remove the first node that have the same value as the given node_value
-    def remove_node(self, node_value):
-        current = self.head
-        if current.value == node_value:
-            self.head = self.head.next
-        while current.next != None:
-            if current.next.value == node_value:
-                current.next = current.next.next
-                break
-            else:
-                current = current.next
- 
+#    # remove the first node that have the same value as the given node_value
+#    def remove_node(self, node_value):
+#        current = self.head
+#        if current.value == node_value:
+#            self.head = self.head.next
+#        while current.next != None:
+#            if current.next.value == node_value:
+#                current.next = current.next.next
+#                break
+#            else:
+#                current = current.next
+
     def __str__(self):
         if self.head != None:
             index = self.head
@@ -49,9 +48,20 @@ class Linked_list:
                 index = index.next
                 node_store.append(str(index.value))
             
-            return "Linked_list [{}]".format('->'.join(node_store))
-        return "Linked_list []"
+            return "[{}]".format('->'.join(node_store))
+        return "[]"
                 
+    def value(self):
+        if self.head != None:
+            index = self.head
+            node_store = [str(index.value)]
+            
+            while index.next != None:
+                index = index.next
+                node_store.append(str(index.value))
+            
+            return "[{}]".format('->'.join(node_store))
+        return "[]"
     
 def random_linked_list(length, min_, max_):
     linked_list = Linked_list()
@@ -59,3 +69,10 @@ def random_linked_list(length, min_, max_):
         value = randint(min_, max_)
         linked_list.add_node(value)
     return linked_list
+
+
+def list_to_linked(list_):
+    new_linked = Linked_list()
+    for i in list_:
+        new_linked.add_node(i)
+    return new_linked
