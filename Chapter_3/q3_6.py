@@ -4,8 +4,6 @@ assumptions about how the stack is implemented. The following are the only
 functons that should be used to write this program:
  push | pop | peek | is_empty
 """
-import unittest
-
 
 # implementation of Stack with push, pop, peek, is_empty methods
 class Stack:
@@ -15,9 +13,11 @@ class Stack:
         self.stack = []
     
     def push(self, value):
-        # instead of append using extend method to insert 
-        # iterable data
-        self.stack.extend(value)
+        if len(value) == 1:
+            self.stack.append(value)
+            # instead of append, extend method can insert iterable data
+        else:
+            self.stack.extend(value)
     
     def pop(self):
         return self.stack.pop()
@@ -32,11 +32,12 @@ class Stack:
     # this is the easiest way...
     def sort(self):
         self.stack.sort()
-    # but let's make our life a little more difficult
-#    def sort(self):
         
 
 # ========== Test =============
+import unittest
+
+
 class Test_stack(unittest.TestCase):
     def setUp(self):
         self.stack = Stack()
