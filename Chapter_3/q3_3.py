@@ -12,10 +12,6 @@ values as it would if there were a single stack).
 Follow up: implement a function pop_at(int index) which performs a pop
 operation on a specific sub-track.
 """
-
-import unittest
-
-
 class Set_of_stacks:
     def __init__(self, capacity):
         self.capacity = capacity
@@ -45,6 +41,12 @@ class Set_of_stacks:
         if index > len(self.stacks) or len(self.stacks[index]) == 0:
             return None
         return self.stacks[index].pop()
+
+
+
+# ======= Test =========
+import unittest
+
 
 class Test_Set(unittest.TestCase):
     def setUp(self):
